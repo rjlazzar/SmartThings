@@ -90,14 +90,14 @@ metadata {
         	description: "0 = Off, 1-254 Seconds, 255 = Always On, default 3", 
             required: false, range: "0..255", defaultValue: 3
          
-        /*
-        	Removed unless/until I can find a way to sync this when the control in the tile makes a change
+        
+	//	Removed unless/until I can find a way to sync this when the control in the tile makes a change
             
         input "locatorStatus", "enum", title: "Locator LED Status", 
         	description: "Status (Bottom) LED", required: false, 
             options: ["off": "Always Off", "statusMode": "Status Mode - On when Dimmer On", 
             "locatorMode": "Locator Mode - On when Dimmer Off"], defaultValue: "locatorMode"
-        */
+        
         
         input "loadType", "enum", title: "Load Type", description: "Type of Bulb in Use",
         	required: false, options: ["incandescent": "Incandescent", "led": "Dimmable LED", "cfl": "Dimmable Compact Flourescent"],
@@ -127,12 +127,12 @@ metadata {
         //	and are not arbitrary.  Note that the actions identify the method to take the indicator to the NEXT possible state, 
         //	not the current state.
 
-		standardTile("indicator", "device.indicatorStatus", width: 2, height: 2, inactiveLabel: false, decoration: "flat") {
+	/*	standardTile("indicator", "device.indicatorStatus", width: 2, height: 2, inactiveLabel: false, decoration: "flat") {
 			state "when off", action:"indicator.indicatorWhenOn", icon:"st.indicators.lit-when-off"
 			state "when on", action:"indicator.indicatorNever", icon:"st.indicators.lit-when-on"
 			state "never", action:"indicator.indicatorWhenOff", icon:"st.indicators.never-lit"
 		}
-
+	*/
 		//	Tile where the users can request that the device status be refreshed.
 		
 		standardTile("refresh", "device.switch", width: 2, height: 2, inactiveLabel: false, decoration: "flat") {
@@ -143,7 +143,7 @@ metadata {
 
 		main(["switch"])
 
-		details(["switch", "indicator", "refresh"])
+		details(["switch", "refresh"])
 
 	}
 }
@@ -256,7 +256,7 @@ private dimmerEvents(physicalgraph.zwave.Command cmd) {
 	return result
 }
 
-
+	/*
 def zwaveEvent(physicalgraph.zwave.commands.configurationv1.ConfigurationReport cmd) {
 	log.debug "${getMyName()} configurationReport $cmd"
 	def value = "when off"
@@ -264,7 +264,7 @@ def zwaveEvent(physicalgraph.zwave.commands.configurationv1.ConfigurationReport 
 	if (cmd.configurationValue[0] == getLocatorStatusValue("never")) {value = "never"}
 	createEvent([name: "indicatorStatus", value: value])
 }
-
+	*/
 def zwaveEvent(physicalgraph.zwave.commands.hailv1.Hail cmd) {
 	log.debug "${getMyName()} Hail event"
 	createEvent([name: "hail", value: "hail", descriptionText: "Switch button was pressed", displayed: false])
@@ -372,7 +372,7 @@ def setLevel(value, duration) {
 
 //	Methods for the indicator state, so that this can be changed from the Tile, rather
 //	than from configure().
-
+	/*
 void indicatorWhenOn() {
 	sendEvent(name: "indicatorStatus", value: "when on", displayed: false)
 	sendHubCommand(new physicalgraph.device.HubAction(zwave.configurationV1.configurationSet(
@@ -390,7 +390,7 @@ void indicatorNever() {
 	sendHubCommand(new physicalgraph.device.HubAction(zwave.configurationV1.configurationSet(
     	configurationValue: [getLocatorStatusValue("never")], parameterNumber: 7, size: 1).format()))
 }
-
+	*/
 //	Method for Polling capability
 
 def poll() {
@@ -476,8 +476,8 @@ def configure() {
         	configurationValue: [presetLightLevel ?: 0], parameterNumber: 5, size: 1).format())),
         sendHubCommand(new physicalgraph.device.HubAction(zwave.configurationV1.configurationSet(
         	configurationValue: [dimLevelTimeout ?: 3], parameterNumber: 6, size: 1).format())),
-        // sendHubCommand(new physicalgraph.device.HubAction(zwave.configurationV1.configurationSet(
-        //	configurationValue: [getLocatorStatusValue()], parameterNumber: 7, size: 1).format())),
+        sendHubCommand(new physicalgraph.device.HubAction(zwave.configurationV1.configurationSet(
+        	configurationValue: [getLocatorStatusValue()], parameterNumber: 7, size: 1).format())),
         sendHubCommand(new physicalgraph.device.HubAction(zwave.configurationV1.configurationSet(
         	configurationValue: [getLoadTypeValue()], parameterNumber: 8, size: 1).format())),
 	], 500 )
