@@ -438,7 +438,7 @@ def getLoadTypeValue() {
 //	into the numerical value expected by the hardware.
 
 def getLocatorStatusValue(String value) {
-	switch(value) {
+	switch(locatorStatus) {
     	case "never":
         	return(0)
             break
