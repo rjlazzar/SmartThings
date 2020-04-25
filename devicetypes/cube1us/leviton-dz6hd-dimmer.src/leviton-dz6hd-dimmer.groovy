@@ -34,7 +34,7 @@ metadata {
 	definition (name: "Leviton DZ6HD Dimmer", namespace: "cube1us", author: "Jay Jaeger", ocfDeviceType: "oic.d.light") {
 		capability "Switch Level"		// Dimmer level
 		capability "Actuator"			// "Tag" capability indicating that this device has commands
-		capability "Indicator"			// Status indicator
+	//	capability "Indicator"			// Status indicator
 		capability "Switch"				// On / Off Capability
 		capability "Polling"			// Device implements poll()
 		capability "Refresh"			// Device implements refresh()
