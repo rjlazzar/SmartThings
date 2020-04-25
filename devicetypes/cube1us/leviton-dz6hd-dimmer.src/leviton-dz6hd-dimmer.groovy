@@ -95,8 +95,8 @@ metadata {
             
         input "locatorStatus", "enum", title: "Locator LED Status", 
         	description: "Status (Bottom) LED", required: false, 
-            options: ["off": "Always Off", "statusMode": "Status Mode - On when Dimmer On", 
-            "locatorMode": "Locator Mode - On when Dimmer Off"], defaultValue: "locatorMode"
+            options: ["off": "Always Off", "statusMode": "Status Mode - On w/Dimmer On", 
+            "locatorMode": "Locator Mode - On w/Dimmer Off"], defaultValue: "locatorMode"
         
         
         input "loadType", "enum", title: "Load Type", description: "Type of Bulb in Use",
