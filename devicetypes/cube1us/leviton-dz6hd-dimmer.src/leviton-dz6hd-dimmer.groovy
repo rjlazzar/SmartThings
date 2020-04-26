@@ -10,7 +10,8 @@
  *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
  *  for the specific language governing permissions and limitations under the License.
  *
- *  This Device Handler functions with the Samsung Hub Version 3
+ *  This Device Handler functions with the Samsung Hub Version 3. It differs from Jay's Device Handler in that the LED
+ *  Status is not configured from a tile but from configure (). I could not get the Indicator Tile to work.	
  */
 /*	SmartThings Device handler for Leviton ZWave Smart Dimmer D6ZHD & DZPD3
  *  Based in part on the SmartThings Dimmer sample code.
