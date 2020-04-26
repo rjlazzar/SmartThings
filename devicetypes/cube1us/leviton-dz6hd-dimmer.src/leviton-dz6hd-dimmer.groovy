@@ -31,7 +31,7 @@ metadata {
 	//	Basic definition information, including what "capabilities" the device has, and what manufacturer
     //	devices it supports (in this case, just the Leviton DZ6HD & DZPD3).
 
-	definition (name: "Leviton DZ6HD Dimmer", namespace: "cube1us", author: "R. Lazzareschi", ocfDeviceType: "oic.d.light") {
+	definition (name: "Leviton DZ6HD Dimmer", namespace: "rjlus1", author: "R. Lazzareschi", ocfDeviceType: "oic.d.light") {
 		capability "Switch Level"		// Dimmer level
 		capability "Actuator"			// "Tag" capability indicating that this device has commands
 	//	capability "Indicator"			// Status indicator
