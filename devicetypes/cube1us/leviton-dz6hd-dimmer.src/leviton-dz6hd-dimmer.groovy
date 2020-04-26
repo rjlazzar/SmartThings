@@ -96,8 +96,8 @@ metadata {
             
         input "locatorStatus", "enum", title: "Locator LED Status", 
         	description: "Status (Bottom) LED", required: false, 
-            options: ["off": "Always Off", "statusMode": "Status Mode - On when Dimmer On", 
-            "locatorMode": "Locator Mode - On when Dimmer Off"], defaultValue: "locatorMode"
+            options: ["never": "Always Off", "statusMode": "Status Mode-On w/Dmr On", 
+            "locatorMode": "LocatorMode-On w/Dmr Off"], defaultValue: "locatorMode"
         
         
         input "loadType", "enum", title: "Load Type", description: "Type of Bulb in Use",
@@ -440,13 +440,13 @@ def getLoadTypeValue() {
 
 def getLocatorStatusValue(String value) {
 	switch(locatorStatus) {
-    	case "Always Off":
+    	case "never":
         	return(0)
             break
         case "statusMode":
         	return(254)
             break
-        default:  // "off" is the default
+        default:  // "locatorMode" is the default
         	return(255)
         	break
     }
