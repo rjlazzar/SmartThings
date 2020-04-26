@@ -44,7 +44,7 @@ metadata {
         capability "Configuration"		// Indicate that this device is configurable.
 
         fingerprint mfr:"001D", prod:"3201", model:"0001", deviceJoinName: "Leviton DZ6HD Dimmer"
-	fingerprint mfg:"001D", prod:"3501", model:"0001", deviceJoinName: "Leviton DZPD3 Dimmer" 
+	fingerprint mfg:"001D", prod:"3501", model:"0001", deviceJoinName: "Leviton DZPD3 Plug-In Dimmer" 
 	}
     
     //	Simulator information.  Not a complete simulation of everything the DZ6HD can do.
