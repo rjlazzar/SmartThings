@@ -439,13 +439,13 @@ def getLoadTypeValue() {
 
 def getLocatorStatusValue(String value) {
 	switch(locatorStatus) {
-    	case "never":
+    	case "Always Off":
         	return(0)
             break
-        case "when on":
+        case "statusMode":
         	return(254)
             break
-        default:  // "when off" is the default
+        default:  // "off" is the default
         	return(255)
         	break
     }
