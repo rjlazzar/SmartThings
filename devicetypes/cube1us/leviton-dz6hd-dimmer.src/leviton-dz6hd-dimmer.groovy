@@ -10,8 +10,8 @@
  *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
  *  for the specific language governing permissions and limitations under the License.
  *
+ *  This Device Handler functions with the Samsung Hub Version 3
  */
- 
 /*	SmartThings Device handler for Leviton ZWave Smart Dimmer D6ZHD & DZPD3
  *  Based in part on the SmartThings Dimmer sample code.
  *	Based in part on code on github posted by "Jay Jaeger", 3/27/2017
@@ -43,7 +43,7 @@ metadata {
 		capability "Light"				// Like "Switch", capability indicating this device can be on() or off()
         capability "Configuration"		// Indicate that this device is configurable.
 
-        fingerprint mfr:"001D", prod:"3201", model:"0001", deviceJoinName: "Leviton DZ6HD Dimmer"
+        fingerprint mfr:"001D", prod:"3201", model:"0001", deviceJoinName: "Leviton DZ6HD Dimmer Switch"
 	fingerprint mfg:"001D", prod:"3501", model:"0001", deviceJoinName: "Leviton DZPD3 Plug-In Dimmer" 
 	}
     
@@ -96,8 +96,8 @@ metadata {
             
         input "locatorStatus", "enum", title: "Locator LED Status", 
         	description: "Status (Bottom) LED", required: false, 
-            options: ["never": "Always Off", "statusMode": "Status Mode-On w/Dmr On", 
-            "locatorMode": "LocatorMode-On w/Dmr Off"], defaultValue: "locatorMode"
+            options: ["never": "LED Always Off", "statusMode": "LED On when Dimmer On", 
+            "locatorMode": "LED On when Dimmer Off"], defaultValue: "locatorMode"
         
         
         input "loadType", "enum", title: "Load Type", description: "Type of Bulb in Use",
