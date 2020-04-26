@@ -12,11 +12,11 @@
  *
  */
  
-/*	SmartThings Device handler for Leviton ZWave Smart Dimmer D6ZHD
+/*	SmartThings Device handler for Leviton ZWave Smart Dimmer D6ZHD & DZPD3
  *  Based in part on the SmartThings Dimmer sample code.
- *	Based in part on code on github posted by "johnconstantelo", 3/27/2017
+ *	Based in part on code on github posted by "Jay Jaeger", 3/27/2017
  *
- *	Copyright 2017 Jay R. Jaeger
+ *	Copyright 2020 R. Lazzareschi
  *
  *	NOTE:  on() and off() ignore the fade-on time (but for the operation only - the default stays set)
  *  I would love to "fix" that, but did not find a way to do it.
@@ -29,9 +29,9 @@
 metadata {
 
 	//	Basic definition information, including what "capabilities" the device has, and what manufacturer
-    //	devices it supports (in this case, just the Levigon DZ6HD).
+    //	devices it supports (in this case, just the Leviton DZ6HD & DZPD3).
 
-	definition (name: "Leviton DZ6HD Dimmer", namespace: "cube1us", author: "Jay Jaeger", ocfDeviceType: "oic.d.light") {
+	definition (name: "Leviton DZ6HD Dimmer", namespace: "cube1us", author: "R. Lazzareschi", ocfDeviceType: "oic.d.light") {
 		capability "Switch Level"		// Dimmer level
 		capability "Actuator"			// "Tag" capability indicating that this device has commands
 	//	capability "Indicator"			// Status indicator
@@ -44,6 +44,7 @@ metadata {
         capability "Configuration"		// Indicate that this device is configurable.
 
         fingerprint mfr:"001D", prod:"3201", model:"0001", deviceJoinName: "Leviton DZ6HD Dimmer"
+	Fingerprint mfg:"001D", prod:"3501", model:"0001", deviceJoinName: "Leviton DZPD3 Dimmer" 
 	}
     
     //	Simulator information.  Not a complete simulation of everything the DZ6HD can do.
@@ -156,7 +157,7 @@ def getMyName() {
 }
 
 def getVersion() {
-	return "V0.94"
+	return "V1.20"
 }
 
 
